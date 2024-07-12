@@ -1,0 +1,22 @@
+body {
+  font-family: spotify-circular, Helvetica, Arial, sans-serif;
+  justify-content: center; /* 내부 요소들을 수평으로 가운데 정렬합니다. */
+  align-items: stretch; /* 내부 요소들의 높이를 컨테이너와 동일하게 늘립니다. */
+}
+
+.wrap {
+  position: relative; /* .wrap 요소를 상대적인 위치로 설정합니다. */
+
+  flex-direction: column; /* 내부 요소들을 수직으로 정렬합니다 (열 방향). */
+  align-items: center; /* 내부 요소들을 수평으로 가운데 정렬합니다. */
+
+  width: 100%; /* .wrap 요소의 너비를 100%로 설정하여 부모 너비에 맞춥니다. */
+  min-width: 320px; /* 최소 너비 제한을 320px으로 설정합니다 (반응형 디자인). */
+
+  /*
+        .wrap 요소의 배경 색상은 rgba(240, 241, 243, 1)입니다.
+        RGBA 값은 빨강(Red), 초록(Green), 파랑(Blue) 및 투명도(Alpha) 값을 나타냅니다.
+        여기서는 흰색 계통의 연한 회색 색상입니다.
+    */
+  background-color: #f8f9fa;
+}
