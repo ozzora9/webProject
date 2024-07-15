@@ -1,45 +1,39 @@
 import "./App.css";
-// import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import MainPage from "./components/MainPage";
+import Category from "./components/CategoryPage";
+import Shop from "./components/Shop";
+import Select from "./components/SelectPage";
+import MyPage from "./components/MyPage";
+import Wish from "./components/Wish";
+import SignupPage from "./components/Signup";
+import LoginPage from "./components/Login";
+import Header from "./components/Header";
 
 function App() {
+  const [loginStatus, setLoginStatus] = useState(false);
   return (
     <div className="wrap">
-      <header>
-        <nav>
-          <a href="/" className="logo">
-            <img src="/assets/svg/logo.svg" alt="logo" />
-          </a>
-          <div className="menuBar">
-            <a href="/">About Us</a>
-            <a href="/">Category</a>
-            <a href="/">Shop</a>
-            <span
-              style={{
-                color: "#2715c3",
-              }}
-            >
-              |
-            </span>
-            <a href="/">Sign up</a>
-            <a href="/">Log in</a>
-          </div>
-        </nav>
-      </header>
-      <section>
-        <div>
-          <div className="headline">
-            <div className="first-headline">Anything</div>
-            <div>everything</div>
-          </div>
-          <div className="sub_line">
-            나의 타입을 알아보는 최적의 선택, Sleek으로 시작하세요
-          </div>
-
-          <a href="/" className="button-area">
-            <button className="button-style">Make your Style</button>
-          </a>
-        </div>
-      </section>
+      <Router>
+        <Header loginStatus={loginStatus} />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/Category" element={<Category />} />
+          <Route path="/Shop" element={<Shop />} />
+          <Route path="/Select" element={<Select />} />
+          <Route path="/Wish" element={<Wish />} />
+          <Route path="/MyPage" element={<MyPage />} />
+          <Route
+            path="/Signup"
+            element={<SignupPage setLoginStatus={setLoginStatus} />}
+          />
+          <Route
+            path="/Login"
+            element={<LoginPage setLoginStatus={setLoginStatus} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
