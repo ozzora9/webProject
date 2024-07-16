@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function FirstPage() {
   return (
     <div className="first-page">
-      <div className="view-image">
+      <div className="first-background">
         <div className="first-logo">
           <Link to="/">Sleek</Link>
         </div>
@@ -15,6 +15,7 @@ function FirstPage() {
         <Link to="/Signup" className="First-button-area">
           <button className="first-button-style">SIGN UP</button>
         </Link>
+        <div className="move-font">Everything, Anything</div>
       </div>
     </div>
   );

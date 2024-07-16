@@ -1,41 +1,40 @@
 @font-face {
-  font-family: "SF_HambakSnow";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff")
-    format("woff");
-  font-weight: normal;
+  font-family: "BookkMyungjo-Bd";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
+    format("woff2");
+  font-weight: 700;
   font-style: normal;
 }
 
 .first-page {
-  font-family: "SF_HambakSnow";
+  font-family: "BookkMyungjo-Bd";
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100%;
-  background-image: url("https://images.squarespace-cdn.com/content/v1/6581fd2d9a7c875e912e0907/a5f53f79-f8ad-4ad3-941a-d9fcf0df2394/Sleek+Objects+2.jpg");
+  background-image: url("/src/firstpage-background.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .first-logo a {
+  margin-top: 50px;
   color: white;
   text-decoration: none;
   font-size: 196px;
 }
 
-.first-button-area {
-  margin: 0 50%;
-}
-
 .first-button-style {
-  font-family: "SF_HambakSnow";
+  font-family: "BookkMyungjo-Bd";
   background-color: transparent;
+  margin: 0 44px;
   padding: 14px 32px;
   border-radius: 50px;
   font-size: 20px;
   color: white;
+  border-width: thin;
   border-color: white;
   border-style: solid;
   cursor: pointer;
@@ -46,3 +45,7 @@
   transform: scale(1.1);
   background-color: #dcdcdc;
 } */
+
+.move-font {
+  font-size: 96px;
+}
