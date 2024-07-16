@@ -7,20 +7,27 @@
 }
 
 .first-page {
+  background-image: url("/src/firstpage-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
   font-family: "BookkMyungjo-Bd";
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
-  background-image: url("/src/firstpage-background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 740px;
+  white-space: nowrap;
+}
+
+.move-font {
+  font-size: 144px;
+  white-space: nowrap;
 }
 
 .first-logo a {
-  margin-top: 50px;
   color: white;
   text-decoration: none;
   font-size: 196px;
@@ -45,7 +52,3 @@
   transform: scale(1.1);
   background-color: #dcdcdc;
 } */
-
-.move-font {
-  font-size: 96px;
-}

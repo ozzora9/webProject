@@ -1,13 +1,12 @@
-@import url("./styles/layout.css");
 @import url("./styles/Header.css");
 @import url("./components/MainPage.css");
-@font-face {
+/* @font-face {
   font-family: "BookkMyungjo-Bd";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
     format("woff2");
   font-weight: 700;
   font-style: normal;
-}
+} */
 
 /* Chrome 및 Safari에서 스크롤바 숨기기 */
 ::-webkit-scrollbar {
@@ -15,17 +14,18 @@
 }
 
 :root {
+  font-family: "BookkMyungjo-Bd";
   --POINT-COLOR: #2715c3;
   --GRAY: #343a40;
 }
 
-#root {
+/* #root {
   height: 100%;
-}
-
+} */
+/* 
 .wrap {
   height: 100%;
-}
+} */
 
 body {
   background-color: #f8f9fa;

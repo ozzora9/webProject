@@ -15,28 +15,28 @@ import Header from "./components/Header";
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
   return (
-    <div className="wrap">
-      <Router>
-        <Header loginStatus={loginStatus} />
-        <Routes>
-          <Route path="/" element={<FirstPage />} />
-          {/* <Route path="/" element={<MainPage />} /> */}
-          <Route path="/Category" element={<Category />} />
-          <Route path="/Shop" element={<Shop />} />
-          <Route path="/Select" element={<Select />} />
-          <Route path="/Wish" element={<Wish />} />
-          <Route path="/MyPage" element={<MyPage />} />
-          <Route
-            path="/Signup"
-            element={<SignupPage setLoginStatus={setLoginStatus} />}
-          />
-          <Route
-            path="/Login"
-            element={<LoginPage setLoginStatus={setLoginStatus} />}
-          />
-        </Routes>
-      </Router>
-    </div>
+    // <div className="wrap">
+    <Router>
+      <Header loginStatus={loginStatus} />
+      <Routes>
+        <Route path="/" element={<FirstPage />} />
+        {/* <Route path="/" element={<MainPage />} /> */}
+        <Route path="/Category" element={<Category />} />
+        <Route path="/Shop" element={<Shop />} />
+        <Route path="/Select" element={<Select />} />
+        <Route path="/Wish" element={<Wish />} />
+        <Route path="/MyPage" element={<MyPage />} />
+        <Route
+          path="/Signup"
+          element={<SignupPage setLoginStatus={setLoginStatus} />}
+        />
+        <Route
+          path="/Login"
+          element={<LoginPage setLoginStatus={setLoginStatus} />}
+        />
+      </Routes>
+    </Router>
+    // </div>
   );
 }
 
