@@ -17,15 +17,12 @@
   font-family: "BookkMyungjo-Bd";
   --POINT-COLOR: #2715c3;
   --GRAY: #343a40;
+  height: 100%;
 }
 
-/* #root {
+#root {
   height: 100%;
-} */
-/* 
-.wrap {
-  height: 100%;
-} */
+}
 
 body {
   background-color: #f8f9fa;

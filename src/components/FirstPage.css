@@ -18,13 +18,22 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 740px;
+  height: 100%;
   white-space: nowrap;
+}
+
+.first-background {
+  flex-grow: 1;
+  align-items: flex-end;
+  display: flex;
 }
 
 .move-font {
   font-size: 144px;
   white-space: nowrap;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
 }
 
 .first-logo a {
