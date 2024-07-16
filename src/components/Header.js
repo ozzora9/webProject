@@ -19,8 +19,8 @@ function Header({ loginStatus }) {
         <Link to="/category">Category</Link>
         <Link to="/shop">Shop</Link>
         <Link to="/select">Select</Link>
+        <Link to="/Result">Result</Link>
         <span>|</span>
-        <Link to="/wish">Wish</Link>
         <Link to="/signup">Sign up</Link>
         <Link to="/login">Log in</Link>
       </div>
