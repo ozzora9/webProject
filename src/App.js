@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import FirstPage from "./components/FirstPage";
 import MainPage from "./components/MainPage";
-import Category from "./components/CategoryPage";
+import Category from "./components/Category";
 import Shop from "./components/Shop";
 import Select from "./components/SelectPage";
 import MyPage from "./components/MyPage";
