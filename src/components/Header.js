@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 
-function Header() {
+function Header({ loginStatus }) {
+  const location = useLocation();
+
+  if (location.pathname === "/") {
+    return null;
+  }
+
   return (
     <nav>
       <div className="logo">

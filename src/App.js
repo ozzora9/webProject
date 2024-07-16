@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import FirstPage from "./components/FirstPage";
 import MainPage from "./components/MainPage";
 import Category from "./components/CategoryPage";
 import Shop from "./components/Shop";
@@ -18,7 +19,8 @@ function App() {
       <Router>
         <Header loginStatus={loginStatus} />
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<FirstPage />} />
+          {/* <Route path="/" element={<MainPage />} /> */}
           <Route path="/Category" element={<Category />} />
           <Route path="/Shop" element={<Shop />} />
           <Route path="/Select" element={<Select />} />
