@@ -1,12 +1,12 @@
 @import url("./styles/Header.css");
 @import url("./components/MainPage.css");
-/* @font-face {
+@font-face {
   font-family: "BookkMyungjo-Bd";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
     format("woff2");
   font-weight: 700;
   font-style: normal;
-} */
+}
 
 /* Chrome 및 Safari에서 스크롤바 숨기기 */
 ::-webkit-scrollbar {
@@ -17,7 +17,12 @@
   font-family: "BookkMyungjo-Bd";
   --POINT-COLOR: #2715c3;
   --GRAY: #343a40;
+  --BLACK: #141617;
   height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #root {
@@ -28,8 +33,115 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   height: 100%;
+  overflow: hidden;
+  /* 로그인창움직임방지 */
 }
 
 #app {
   padding: 30px;
+}
+
+.main-search {
+  height: calc(100% - 100px);
+  width: 100%;
+  position: relative;
+}
+
+.video-banner {
+  position: absolute;
+  object-fit: cover;
+  height: calc(100% - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-video {
+  position: absolute;
+  object-fit: cover;
+  z-index: -1;
+  height: calc(100% - 100px);
+  width: 100%;
+}
+
+.search-box {
+  height: 20px;
+  width: 520px;
+  background: white;
+  border-radius: 40px;
+  padding: 8px 48px 8px 24px;
+  border: none;
+}
+
+.search-txt {
+  border: none;
+  background: none;
+}
+
+.search-btn {
+  float: right;
+  width: 40px;
+  height: 100%;
+  background-color: white;
+  border: none;
+}
+
+.first-page {
+  background-image: url("/src/firstpage-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  font-family: "BookkMyungjo-Bd";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.first-background {
+  flex-grow: 1;
+  align-items: flex-end;
+  display: flex;
+}
+
+.move-font {
+  font-size: 144px;
+  white-space: nowrap;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.first-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 196px;
+}
+
+.first-button-style {
+  font-family: "BookkMyungjo-Bd";
+  background-color: transparent;
+  margin: 0 44px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 20px;
+  color: white;
+  border-width: thin;
+  border-color: white;
+  border-style: solid;
+  cursor: pointer;
+  /* transition: transform 0.3s, background-color 0.3s; */
+}
+
+.first-button-style:hover {
+  transform: scale(1.1);
 }
