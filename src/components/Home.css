@@ -1,11 +1,11 @@
-.main-page {
+/* .home-page {
   display: flex;
   height: 1000px;
   text-align: center;
   background-color: #f8f9fa;
 }
 
-.view-main {
+.view-home {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -20,7 +20,7 @@
   background-position: 50% 16%;
 }
 
-.headline {
+.home-headline {
   padding-top: 32px;
   position: relative;
   margin-bottom: 32px;
@@ -31,7 +31,7 @@
   line-height: 110%;
 }
 
-.sub_line {
+.home-subline {
   margin-top: 24px;
   font-family: "BookkMyungjo-Bd";
   position: relative;
@@ -43,14 +43,14 @@
   height: fit-content;
 }
 
-.button-area {
+.home-button-area {
   margin-top: 16px;
   padding-bottom: 44px;
   width: fit-content;
   height: fit-content;
 }
 
-.button-style {
+.home-button-style {
   padding: 14px 32px;
   background-color: #f8f9fa;
   border-radius: 50px;
@@ -62,7 +62,7 @@
   transition: transform 0.3s, background-color 0.3s;
 }
 
-.button-style:hover {
+.home-button-style:hover {
   transform: scale(1.1);
   background-color: #dcdcdc;
-}
+} */

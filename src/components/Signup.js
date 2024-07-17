@@ -3,7 +3,7 @@ import { auth, db } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import "../styles/Login.css";
-import "./MainPage.css";
+import "./Home.css";
 
 function SignupPage({ setLoginStatus }) {
   const [email, setEmail] = useState("");

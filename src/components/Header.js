@@ -15,12 +15,12 @@ function Header({ loginStatus }) {
         <Link to="/">Sleek</Link>
       </div>
       <div className="menuBar">
-        <Link to="/">Home</Link>
+        <Link to="/Home">Home</Link>
         <Link to="/category">Category</Link>
         <Link to="/shop">Shop</Link>
         <Link to="/select">Select</Link>
         <span>|</span>
-        <Link to="/wish">Wish</Link>
+        <Link to="/result">Result</Link>
         <Link to="/signup">Sign up</Link>
         <Link to="/login">Log in</Link>
       </div>

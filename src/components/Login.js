@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-// import "../styles/Login.css";
-// import "./MainPage.css";
+import "../styles/Login.css";
+import "./Home.css";
 
 function LoginPage({ setLoginStatus }) {
   const [email, setEmail] = useState("");

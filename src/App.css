@@ -1,5 +1,5 @@
 @import url("./styles/Header.css");
-@import url("./components/MainPage.css");
+@import url("./components/Home.css");
 @font-face {
   font-family: "BookkMyungjo-Bd";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
@@ -33,8 +33,8 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   height: 100%;
-  overflow: hidden;
-  /* 로그인창움직임방지 */
+  /* overflow: hidden; */
+  /* 로그인창움직임방지로 적용했는데 검색창이 이상해져서 각주 */
 }
 
 #app {
@@ -42,16 +42,23 @@ body {
 }
 
 .main-search {
-  height: calc(100% - 100px);
+  height: 100%;
   width: 100%;
   position: relative;
+  color: white;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  text-align: center;
 }
 
 .video-banner {
-  position: absolute;
   object-fit: cover;
-  height: calc(100% - 100px);
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,24 +75,59 @@ body {
 
 .search-box {
   height: 20px;
-  width: 520px;
+  /* width: 520px; */
   background: white;
   border-radius: 40px;
-  padding: 8px 48px 8px 24px;
+  padding: 8px 20px 10px 24px;
   border: none;
 }
 
 .search-txt {
   border: none;
   background: none;
+  outline: none;
+  float: left;
+  width: 500px;
+  height: 20px;
+  font-family: "BookkMyungjo-Bd";
+  padding: 0;
 }
 
 .search-btn {
-  float: right;
-  width: 40px;
-  height: 100%;
-  background-color: white;
   border: none;
+  float: right;
+  /* width: 40px;
+  height: 100%; */
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.home-button-area {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+}
+
+.home-button-style {
+  font-family: "BookkMyungjo-Bd";
+  background-color: transparent;
+  margin: 0 44px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 20px;
+  color: var(--BLACK);
+  border-width: thin;
+  border-color: var(--BLACK);
+  border-style: solid;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.home-button-style:hover {
+  transform: scale(1.1);
 }
 
 .first-page {
@@ -139,7 +181,7 @@ body {
   border-color: white;
   border-style: solid;
   cursor: pointer;
-  /* transition: transform 0.3s, background-color 0.3s; */
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .first-button-style:hover {
