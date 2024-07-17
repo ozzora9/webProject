@@ -20,7 +20,6 @@ const Result = () => {
           대표적입니다. 자연적이고 따뜻한 색상과 유기농 면, 린넨 등의 소재가
           주로 사용됩니다.
         </p>
-        <button className="trend-button">MORE ABOUT HIPPIE STYLE</button>
       </div>
     </div>
   );
