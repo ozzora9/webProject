@@ -187,3 +187,27 @@ body {
 .first-button-style:hover {
   transform: scale(1.1);
 }
+
+.Ctg-buttons {
+  margin-bottom: 20px;
+}
+
+.Ctg-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Ctg-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.Ctg-grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
