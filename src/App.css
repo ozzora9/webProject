@@ -69,7 +69,7 @@ body {
   position: absolute;
   object-fit: cover;
   z-index: -1;
-  height: calc(100% - 100px);
+  /* height: calc(100% - 54px); */
   width: 100%;
 }
 
@@ -118,9 +118,9 @@ body {
   padding: 14px 32px;
   border-radius: 50px;
   font-size: 20px;
-  color: var(--BLACK);
+  color: white;
   border-width: thin;
-  border-color: var(--BLACK);
+  border-color: white;
   border-style: solid;
   cursor: pointer;
   transition: transform 0.3s, background-color 0.3s;
