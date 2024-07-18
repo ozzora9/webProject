@@ -4,7 +4,7 @@ import "../styles/Result.css";
 const Result = () => {
   return (
     <div className="result-container">
-      <div className="image-section">
+      <div className="type-image">
         <img src="/assets/img/classic1.jpg" alt="Hippie Look" />
       </div>
       <div className="content-section">
@@ -21,6 +21,7 @@ const Result = () => {
           주로 사용됩니다.
         </p>
       </div>
+      <div className="result-image">result, image </div>
     </div>
   );
 };

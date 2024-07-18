@@ -1,200 +1,177 @@
-// import { NextPage } from "next";
-// import { useState } from "react";
-// import Button from "../components/lib/button";
-// import React from "react";
+import React, { useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
-// const Signup: NextPage = () => {
-//   // 초기값 세팅 - 아이디, 닉네임, 비밀번호, 비밀번호확인, 이메일, 전화번호, 생년월일
-//   const [id, setId] = React.useState("");
-//   const [name, setName] = React.useState("");
-//   const [password, setPassword] = React.useState("");
-//   const [passwordConfirm, setPasswordConfirm] = React.useState("");
-//   const [email, setEmail] = React.useState("");
-//   const [phone, setPhone] = React.useState("");
-//   const [birth, setBirth] = React.useState("");
+const SignupTest = ({ setLoginStatus }) => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
-//   // 오류메세지 상태 저장
-//   const [idMessage, setIdMessage] = React.useState("");
-//   const [nameMessage, setNameMessage] = React.useState("");
-//   const [passwordMessage, setPasswordMessage] = React.useState("");
-//   const [passwordConfirmMessage, setPasswordConfirmMessage] =
-//     React.useState("");
-//   const [emailMessage, setEmailMessage] = React.useState("");
-//   const [phoneMessage, setPhoneMessage] = React.useState("");
-//   const [birthMessage, setBirthMessage] = React.useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
+  const [nameMessage, setNameMessage] = useState(""); // 이름 필드에 대한 오류 메시지 상태 추가
 
-//   // 유효성 검사
-//   const [isId, setIsId] = React.useState(false);
-//   const [isname, setIsName] = React.useState(false);
-//   const [isPassword, setIsPassword] = React.useState(false);
-//   const [isPasswordConfirm, setIsPasswordConfirm] = React.useState(false);
-//   const [isEmail, setIsEmail] = React.useState(false);
-//   const [isPhone, setIsPhone] = React.useState(false);
-//   const [isBirth, setIsBirth] = React.useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isNameValid, setIsNameValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isPasswordConfirmValid, setIsPasswordConfirmValid] = useState(false);
 
-//   const onChangeId = (e) => {
-//     const currentId = e.target.value;
-//     setId(currentId);
-//     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (
+      isEmailValid &&
+      isNameValid &&
+      isPasswordValid &&
+      isPasswordConfirmValid
+    ) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
 
-//     if (!idRegExp.test(currentId)) {
-//       setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요!");
-//       setIsId(false);
-//     } else {
-//       setIdMessage("사용가능한 아이디 입니다.");
-//       setIsId(true);
-//     }
-//   };
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          name,
+          email,
+        });
 
-//   const onChangeName = (e) => {
-//     const currentName = e.target.value;
-//     setName(currentName);
+        setLoginStatus(true); // 회원가입 성공 후 로그인 상태 설정
+        console.log("회원가입 성공:", user);
+      } catch (error) {
+        console.error("회원가입 실패:", error);
+        alert("회원가입 실패: " + error.message);
+      }
+    } else {
+      alert("입력한 정보를 다시 확인해주세요");
+    }
+  };
 
-//     if (currentName.length < 2 || currentName.length > 5) {
-//       setNameMessage("닉네임은 2글자 이상 5글자 이하로 입력해주세요!");
-//       setIsName(false);
-//     } else {
-//       setNameMessage("사용가능한 닉네임 입니다.");
-//       setIsName(true);
-//     }
-//   };
+  const validateEmail = (email) => {
+    const emailRegExp =
+      /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+    return emailRegExp.test(email);
+  };
 
-//   const onChangePassword = (e) => {
-//     const currentPassword = e.target.value;
-//     setPassword(currentPassword);
-//     const passwordRegExp =
-//       /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-//     if (!passwordRegExp.test(currentPassword)) {
-//       setPasswordMessage(
-//         "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!"
-//       );
-//       setIsPassword(false);
-//     } else {
-//       setPasswordMessage("안전한 비밀번호 입니다.");
-//       setIsPassword(true);
-//     }
-//   };
-//   const onChangePasswordConfirm = (e) => {
-//     const currentPasswordConfirm = e.target.value;
-//     setPasswordConfirm(currentPasswordConfirm);
-//     if (password !== currentPasswordConfirm) {
-//       setPasswordConfirmMessage("떼잉~ 비밀번호가 똑같지 않아요!");
-//       setIsPasswordConfirm(false);
-//     } else {
-//       setPasswordConfirmMessage("똑같은 비밀번호를 입력했습니다.");
-//       setIsPasswordConfirm(true);
-//     }
-//   };
-//   const onChangeEmail = (e) => {
-//     const currentEmail = e.target.value;
-//     setEmail(currentEmail);
-//     const emailRegExp =
-//       /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+  const validatePassword = (password) => {
+    const passwordRegExp =
+      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    return passwordRegExp.test(password);
+  };
 
-//     if (!emailRegExp.test(currentEmail)) {
-//       setEmailMessage("이메일의 형식이 올바르지 않습니다!");
-//       setIsEmail(false);
-//     } else {
-//       setEmailMessage("사용 가능한 이메일 입니다.");
-//       setIsEmail(true);
-//     }
-//   };
-//   const onChangePhone = (getNumber) => {
-//     const currentPhone = getNumber;
-//     setPhone(currentPhone);
-//     const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+  const validateName = (name) => {
+    return name.length >= 2 && name.length <= 5;
+  };
 
-//     if (!phoneRegExp.test(currentPhone)) {
-//       setPhoneMessage("올바른 형식이 아닙니다!");
-//       setIsPhone(false);
-//     } else {
-//       setPhoneMessage("사용 가능한 번호입니다:-)");
-//       setIsPhone(true);
-//     }
-//   };
+  const onChangeEmail = (e) => {
+    const currentEmail = e.target.value;
+    setEmail(currentEmail);
+    if (!validateEmail(currentEmail)) {
+      setEmailMessage("올바르지 않은 형식입니다");
+      setIsEmailValid(false);
+    } else {
+      setEmailMessage("");
+      setIsEmailValid(true);
+    }
+  };
 
-//   const addHyphen = (e) => {
-//     const currentNumber = e.target.value;
-//     setPhone(currentNumber);
-//     if (currentNumber.length == 3 || currentNumber.length == 8) {
-//       setPhone(currentNumber + "-");
-//       onChangePhone(currentNumber + "-");
-//     } else {
-//       onChangePhone(currentNumber);
-//     }
-//   };
+  const onChangePassword = (e) => {
+    const currentPassword = e.target.value;
+    setPassword(currentPassword);
+    if (!validatePassword(currentPassword)) {
+      setPasswordMessage("숫자+영문자+특수문자 조합 8자리 이상 입력해주세요");
+      setIsPasswordValid(false);
+    } else {
+      setPasswordMessage("");
+      setIsPasswordValid(true);
+    }
+  };
 
-//   const onChangeBirth = (e) => {
-//     const currentBirth = e.target.value;
-//     setBirth(currentBirth);
-//   };
+  const onChangeName = (e) => {
+    const currentName = e.target.value;
+    setName(currentName);
+    if (!validateName(currentName)) {
+      setNameMessage("2글자 이상 5글자 이내로 입력해주세요");
+      setIsNameValid(false);
+    } else {
+      setNameMessage("");
+      setIsNameValid(true);
+    }
+  };
 
-//   return (
-//     <>
-//       <h3>Sign Up</h3>
-//       <div className="form">
-//         <div className="form-el">
-//           <label htmlFor="id">Id</label> <br />
-//           <input id="id" name="id" value={id} onChange={onChangeId} />
-//           <p className="message"> {idMessage} </p>
-//         </div>
+  const onChangePasswordConfirm = (e) => {
+    const currentPasswordConfirm = e.target.value;
+    setPasswordConfirm(currentPasswordConfirm);
+    if (password !== currentPasswordConfirm) {
+      setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
+      setIsPasswordConfirmValid(false);
+    } else {
+      setPasswordConfirmMessage("");
+      setIsPasswordConfirmValid(true);
+    }
+  };
 
-//         <div className="form-el">
-//           <label htmlFor="name">Nick Name</label> <br />
-//           <input id="name" name="name" value={name} onChange={onChangeName} />
-//           <p className="message">{nameMessage}</p>
-//         </div>
-//         <div className="form-el">
-//           <label htmlFor="password">Password</label> <br />
-//           <input
-//             id="password"
-//             name="password"
-//             value={password}
-//             onChange={onChangePassword}
-//           />
-//           <p className="message">{passwordMessage}</p>
-//         </div>
-//         <div className="form-el">
-//           <label htmlFor="passwordConfirm">Password Confirm</label> <br />
-//           <input
-//             id="passwordConfirm"
-//             name="passwordConfirm"
-//             value={passwordConfirm}
-//             onChange={onChangePasswordConfirm}
-//           />
-//           <p className="message">{passwordConfirmMessage}</p>
-//         </div>
-//         <div className="form-el">
-//           <label htmlFor="email">Email</label> <br />
-//           <input
-//             id="email"
-//             name="name"
-//             value={email}
-//             onChange={onChangeEmail}
-//           />
-//           <p className="message">{emailMessage}</p>
-//         </div>
-//         <div className="form-el">
-//           <label htmlFor="phone">Phone</label> <br />
-//           <input id="phone" name="phone" value={phone} onChange={addHyphen} />
-//           <p className="message">{phoneMessage}</p>
-//         </div>
-//         <div className="form-el">
-//           <label htmlFor="birth">Birth</label> <br />
-//           <input
-//             id="birth"
-//             name="birth"
-//             value={birth}
-//             onChange={onChangeBirth}
-//           />
-//           <p className="message">{birthMessage}</p>
-//         </div>
-//         <br />
-//         <br />
-//         <button type="submit">Submit</button>
-//       </div>
-//     </>
-//   );
-// };
+  return (
+    <div className="login-page">
+      <div className="login-float-container">
+        <h1>Sleek</h1>
+        <form className="login-form" onSubmit={handleSignup}>
+          <label>
+            <span>E-mail</span>
+            <input
+              placeholder="E-mail"
+              type="email"
+              value={email}
+              onChange={onChangeEmail}
+            />
+          </label>
+          <p className="message">{emailMessage}</p>
+          <label>
+            <span>Username</span>
+            <input
+              placeholder="Username"
+              type="text"
+              value={name}
+              onChange={onChangeName}
+            />
+          </label>
+          <p className="message">{nameMessage}</p>
+          <label>
+            <span>Password</span>
+            <input
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={onChangePassword}
+            />
+          </label>
+          <p className="message">{passwordMessage}</p>
+          <label>
+            <span>Confirm pssword</span>
+            <input
+              placeholder="Confirm password"
+              type="password"
+              value={passwordConfirm}
+              onChange={onChangePasswordConfirm}
+            />
+          </label>
+          <p className="message">{passwordConfirmMessage}</p>
+          <button type="submit">Sign Up</button>
+        </form>
+        <div className="additional-links">
+          <Link to="/forgot-password">Forgot Password?</Link>
+          <span> | </span>
+          <Link to="/LoginTest">Login</Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-// export default Signup;
+export default SignupTest;

@@ -123,10 +123,9 @@ body {
   border-style: solid;
   cursor: pointer;
   transition: transform 0.3s, background-color 0.3s;
-}
-
-.home-button-style:hover {
-  transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .first-page {
@@ -159,13 +158,17 @@ body {
   white-space: nowrap;
   flex-grow: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .first-logo a {
   color: white;
   text-decoration: none;
   font-size: 196px;
+}
+
+.first-button-area {
+  padding: 0 0 0 0;
 }
 
 .first-button-style {
@@ -214,7 +217,7 @@ body {
 .login-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100% - 66px);
   justify-content: center;
   align-items: center;
   padding: 0 64px;
@@ -223,7 +226,9 @@ body {
 .login-float-container {
   padding: 32px 48px 40px 48px;
   border-radius: 16px;
-  border: 2px solid #c0c0c0;
+  width: 430px;
+  background-color: white;
+  white-space: nowrap;
 
   & h1 {
     text-align: center;
@@ -248,7 +253,7 @@ body {
     & input {
       transition: all 150ms;
       font-family: "BookkMyungjo-Bd";
-      width: 240px;
+      /* width: 240px; */
       font-size: 16px;
       padding: 8px 12px;
       /* border: 2px solid #e8e8e8;
@@ -291,8 +296,13 @@ body {
   }
 }
 
+.additional-links {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px 0;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
