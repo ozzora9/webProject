@@ -27,7 +27,7 @@ function App() {
         <Route path="/Result" element={<Result />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route
-          path="/Signup"
+          path="/SignupTest"
           element={<SignupPage setLoginStatus={setLoginStatus} />}
         />
         <Route

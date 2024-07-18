@@ -49,9 +49,9 @@ function LoginPage({ setLoginStatus }) {
           <button type="submit">Login</button>
         </form>
         <div className="additional-links">
-          <Link to="/forgot-password">forgot password?</Link>
+          <Link to="/forgot-password">Forgot Password?</Link>
           <span> | </span>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/SignupTest">Sign Up</Link>
         </div>
       </div>
     </div>
